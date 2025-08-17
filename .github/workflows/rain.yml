@@ -2,9 +2,8 @@ name: Rain nudger
 
 on:
   schedule:
-    # 7:00 AM America/New_York (DST-aware via two crons)
-    - cron: "0 11 * 3-10 *"   # Mar–Oct (EDT, UTC-4)
-    - cron: "0 12 * 11,12,1,2 *"  # Nov–Feb (EST, UTC-5)
+    - cron: "0 11 * * *"  # runs daily at 11:00 UTC
+    - cron: "0 12 * * *"  # runs daily at 12:00 UTC
   workflow_dispatch:
 
 jobs:

@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 import os, sys, requests, datetime as dt
 from typing import List, Tuple
+from zoneinfo import ZoneInfo
+
+
+
+
 
 # ===== User-tweakable defaults =====
 HOURS_AHEAD = int(os.environ.get("HOURS_AHEAD", "12"))
@@ -74,6 +79,12 @@ def analyze_rain(wx: dict, hours_ahead: int) -> Tuple[bool, str]:
     return will_rain, summary
 
 def notify_pushover(msg: str):
+    # Fire only at 07:00 local New York time
+    local_now = dt.datetime.now(ZoneInfo(TIMEZONE))
+    if local_now.hour != 7:
+        print(f"Skip: it's {local_now.strftime('%H:%M %Z')}, only alert at 07:00 local.")
+        return
+
     token = os.environ.get("PUSHOVER_TOKEN")
     user = os.environ.get("PUSHOVER_USER")
     if not token or not user:
