@@ -1,8 +1,8 @@
 # Rain Nudger (GitHub Actions + Python)
 
-Daily 7:00 AM America/New_York push if rain is likely in the next N hours.
+Daily 7:00 AM America/New_York push if rain is likely in the next N hours, so I knwo I should flex my 800 dollar arcteryx alpha jacket on that day.
 
-**Stack:** GitHub Actions (cron) → Python (Open‑Meteo, no API key) → Pushover *or* Telegram push
+**Stack:** GitHub Actions (cron) → Python (Open‑Meteo, no API key) → Pushover 
 
 ---
 
@@ -13,13 +13,11 @@ Daily 7:00 AM America/New_York push if rain is likely in the next N hours.
    - `LAT` (e.g., `40.7128` for NYC)
    - `LON` (e.g., `-74.0060` for NYC)
    - `CITY` (for display, e.g., `NYC`)
-   - `NOTIFY` = `pushover` **or** `telegram`
+   - `NOTIFY` = `pushover` 
    - If `NOTIFY=pushover`: add `PUSHOVER_TOKEN` and `PUSHOVER_USER` (from your Pushover app setup)
-   - If `NOTIFY=telegram`: add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`
 3. (Optional) Adjust thresholds in `rain.py` (HOURS_AHEAD, THRESHOLD).
 4. Commit to `main`. The workflow runs every morning at **7:00 AM ET** (DST-safe) and can be run on-demand via **Actions → Rain nudger → Run workflow**.
 
-> **Note on Telegram:** Create a bot with @BotFather, get the bot token, then obtain your `TELEGRAM_CHAT_ID` (e.g., via @userinfobot after messaging your bot).
 
 ---
 
